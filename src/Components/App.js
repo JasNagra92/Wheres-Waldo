@@ -1,16 +1,15 @@
-import React from "react";
-import GameField from "./GameField";
-import '../Styles/App.css'
+import React from 'react';
+import GameField from './GameField';
+import Header from './Header';
+import { TimerProvider } from './TimerContext';
+import '../Styles/App.css';
 function App() {
   return (
     <div className="App">
-      <div>
-
-      </div>
-
-      <div>
+      <TimerProvider>
+        <Header />
         <GameField />
-      </div>
+      </TimerProvider>
     </div>
   );
 }

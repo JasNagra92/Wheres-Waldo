@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styles from '../Styles/GameField.module.css';
+import { TimerContext } from './TimerContext';
 
 const GameField = () => {
+  const [timer, setTimer] = useContext(TimerContext);
+  const [seconds, setSeconds] = useState(0);
   const [coordinates, setCoordinates] = useState({});
   const [selected, setSelected] = useState('goku');
   const [formVisibility, setFormVisibility] = useState(false);
@@ -12,7 +15,13 @@ const GameField = () => {
       offsetx: e.nativeEvent.offsetX,
       offsety: e.nativeEvent.offsetY,
     });
+    setInterval(() => {
+      setSeconds((seconds) => seconds + 1);
+    }, 1000);
   };
+  useEffect(() => {
+    setTimer(seconds);
+  }, [seconds]);
   const handleChange = (e) => {
     setSelected(e.target.value);
   };
