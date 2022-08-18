@@ -1,5 +1,6 @@
 import React from "react";
 import GameField from "./GameField";
+import '../Styles/App.css'
 function App() {
   return (
     <div className="App">
