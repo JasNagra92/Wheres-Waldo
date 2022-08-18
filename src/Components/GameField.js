@@ -11,22 +11,35 @@ const GameField = () => {
     setCoordinates({
       offsetx: e.nativeEvent.offsetX,
       offsety: e.nativeEvent.offsetY,
-      clientx: e.clientX,
-      clienty: e.clientY,
     });
   };
   const handleChange = (e) => {
     setSelected(e.target.value);
   };
   let viewMode = {};
+  let selectBox = {};
 
   if (formVisibility) {
     viewMode = {
       display: 'block',
-      position: 'absolute'
+      position: 'absolute',
+      left: coordinates.offsetx,
+      top: coordinates.offsety,
+    };
+    selectBox = {
+      display: 'block',
+      position: 'absolute',
+      top: coordinates.offsety - 15,
+      left: coordinates.offsetx - 25,
+      width: '20px',
+      height: '20px',
+      border: '1px solid black',
     };
   } else {
     viewMode = {
+      display: 'none',
+    };
+    selectBox = {
       display: 'none',
     };
   }
@@ -47,6 +60,7 @@ const GameField = () => {
           </select>
         </form>
       </div>
+      <div style={selectBox}></div>
     </div>
   );
 };
